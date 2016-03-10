@@ -33,6 +33,16 @@ $(document).ready(function(){
 	}
 
 	function attachHandlers(){
+		$(document).on("click", "[data-id] .up", function(){
+			var id = $(this).parent().attr("data-id");
+			vote_up(id);
+		});
+
+		$(document).on("click", "[data-id] .down", function(){
+			var id = $(this).parent().attr("data-id");
+			vote_down(id);
+		});
+		
 		$("#post").on("click", function(){
 			if (normalized()){
 				var landmarkName = $("#location").val();
@@ -107,11 +117,25 @@ $(document).ready(function(){
 		list_item.text(landmark.location + " - Posted by:" + landmark.author);
 		list_item.attr("data-id", landmark.id);
 
+		var upButton = $("<button />");
+		upButton.text("VoteUp");
+		upButton.addClass("up");
+
+		var downButton = $("<button />");
+		downButton.text("VoteDown");
+		downButton.addClass("down");
+
+		var votes = $("<span />");
+		votes.text("  Number of votes: "+landmark.votes);
+
 		var link = $("<a />");
 		link.attr("href", landmark.google_link);
 		link.attr("target", "_blank");
 		link.text("Google maps");
 
+		list_item.append(votes);
+		list_item.append(upButton);
+		list_item.append(downButton);
 		list_item.append(link);
 
 		$("#landmarks").append(list_item);
