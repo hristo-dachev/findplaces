@@ -55,6 +55,53 @@ $(document).ready(function(){
 		});
 	}
 
+	function vote_up(id){
+		var _url = Endpoint+"landmarks/"+id;
+
+		var createPromise = $.ajax({
+			url: _url,
+			method: "GET",
+			dataType: "JSON",
+		}).then(function(responce){
+			var votes = responce.votes;
+			votes += 1;
+			data = {
+				votes: votes,
+			}
+			var _url2 = Endpoint+"landmarks/"+responce.id;
+			var createPromise2 = $.ajax({
+				url: _url2,
+				method: "PATCH",
+				data: data,
+			}).then(function(responce){
+			});
+		});
+	}
+
+	function vote_down(id){
+		var _url = Endpoint+"landmarks/"+id;
+
+		var createPromise = $.ajax({
+			url: _url,
+			method: "GET",
+			dataType: "JSON",
+		}).then(function(responce){
+			var votes = responce.votes;
+			votes -= 1;
+			data = {
+				votes: votes,
+			}
+			var _url2 = Endpoint+"landmarks/"+responce.id;
+			var createPromise2 = $.ajax({
+				url: _url2,
+				method: "PATCH",
+				data: data,
+			}).then(function(responce){
+			});
+		});
+	}
+
+
 	function visualise(landmark){
 		var list_item = $("<li />");
 		list_item.text(landmark.location + " - Posted by:" + landmark.author);
