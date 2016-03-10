@@ -1,0 +1,11 @@
+{
+  "landmarks": [
+    {
+      "id": 1,
+      "author": "Hristo",
+      "votes": 0,
+      "location": "TUES",
+      "google_link": "https://www.google.bg/maps/place/%D0%A2%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%BD%D0%BE+%D0%A3%D1%87%D0%B8%D0%BB%D0%B8%D1%89%D0%B5+%D0%95%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%BD%D0%B8+%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B8+%D0%A2%D0%A3%D0%95%D0%A1/@42.6621689,23.3750424,17.83z/data=!4m2!3m1!1s0x0000000000000000:0x8ec03473931dd6b6?hl=en"
+    }
+  ]
+}
