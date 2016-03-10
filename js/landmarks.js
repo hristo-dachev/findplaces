@@ -55,5 +55,33 @@ $(document).ready(function(){
 		});
 	}
 
+	function visualise(landmark){
+		var list_item = $("<li />");
+		list_item.text(landmark.location + " - Posted by:" + landmark.author);
+		list_item.attr("data-id", landmark.id);
+
+		var link = $("<a />");
+		link.attr("href", landmark.google_link);
+		link.attr("target", "_blank");
+		link.text("Google maps");
+
+		list_item.append(link);
+
+		$("#landmarks").append(list_item);
+	}
+
+	function visualise_all(){
+		var _url = Endpoint+"landmarks/";
+		
+		var createPromise = $.ajax({
+			url: _url,
+			method: "GET",
+			dataType: "JSON",
+		}).then(function(responce){
+			_.forEach(responce, visualise);
+		});
+	}
+
 	attachHandlers();
+	visualise_all();
 });
