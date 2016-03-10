@@ -145,7 +145,7 @@ $(document).ready(function(){
 	}
 
 	function visualise_all(){
-		var _url = Endpoint+"landmarks/";
+		var _url = Endpoint+"landmarks/?_sort=votes&_order=DESC";
 		
 		var createPromise = $.ajax({
 			url: _url,
