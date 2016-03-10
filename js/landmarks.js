@@ -17,6 +17,7 @@ $(document).ready(function(){
 			method: "POST",
 			data: data,
 		}).then(function(responce){
+			visualise_all();
 		});
 	}
 
@@ -42,7 +43,7 @@ $(document).ready(function(){
 			var id = $(this).parent().attr("data-id");
 			vote_down(id);
 		});
-		
+
 		$("#post").on("click", function(){
 			if (normalized()){
 				var landmarkName = $("#location").val();
@@ -84,6 +85,7 @@ $(document).ready(function(){
 				method: "PATCH",
 				data: data,
 			}).then(function(responce){
+				visualise_all();
 			});
 		});
 	}
@@ -107,6 +109,7 @@ $(document).ready(function(){
 				method: "PATCH",
 				data: data,
 			}).then(function(responce){
+				visualise_all();
 			});
 		});
 	}
@@ -149,6 +152,7 @@ $(document).ready(function(){
 			method: "GET",
 			dataType: "JSON",
 		}).then(function(responce){
+			$("#landmarks").html("");
 			_.forEach(responce, visualise);
 		});
 	}
