@@ -1,7 +1,29 @@
 $(document).ready(function(){
 	"uses strict";
 	
+	var postChecker = {
+		"allData": [
+
+		]
+	};
+
 	var Endpoint = "http://localhost:3000/";
+
+	function CreatePostChecker(){
+		function populate(landmark){
+			postChecker['allData'].push({"location": landmark.location});		
+		}
+
+		var _url = Endpoint+"landmarks/";
+		
+		var createPromise = $.ajax({
+			url: _url,
+			method: "GET",
+			dataType: "JSON",
+		}).then(function(responce){
+			_.forEach(responce, populate);
+		});
+	}
 
 	function makeLandmark(author, location, google){
 		var _url = Endpoint + "landmarks/";
@@ -159,4 +181,5 @@ $(document).ready(function(){
 
 	attachHandlers();
 	visualise_all();
+	CreatePostChecker();
 });
